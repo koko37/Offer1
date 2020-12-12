@@ -53,7 +53,7 @@ const TopBar = ({
         <RouterLink to="/" className={classes.logoLink}>
           <Logo alt="logo" className={classes.logoImg} />
           <Typography variant="h4" className={classes.logoText}>
-            Offer1 Interview Excercise @rocky
+            Offer1 @rocky
           </Typography>
         </RouterLink>
         <Box flexGrow={1} />

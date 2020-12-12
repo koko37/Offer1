@@ -9,7 +9,9 @@ import { Pagination } from '@material-ui/lab';
 import Page from '../../../components/Page';
 import Toolbar from './Toolbar';
 import ProductCard from './ProductCard';
+import HomeCard from './HomeCard';
 import data from './data';
+import homes from '../../../homes.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +32,7 @@ const ProductList = () => {
   return (
     <Page
       className={classes.root}
-      title="Browse homes"
+      title="Browse houses"
     >
       <Container maxWidth={false}>
         <Toolbar />
@@ -39,17 +41,17 @@ const ProductList = () => {
             container
             spacing={3}
           >
-            {products.map((product) => (
+            {homes.map((home) => (
               <Grid
                 item
-                key={product.id}
+                key={home.id}
                 lg={4}
                 md={6}
                 xs={12}
               >
-                <ProductCard
+                <HomeCard
                   className={classes.productCard}
-                  product={product}
+                  home={home}
                 />
               </Grid>
             ))}

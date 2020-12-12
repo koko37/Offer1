@@ -1,13 +1,13 @@
 import React from 'react';
 import MainLayout from './layouts/MainLayout';
-import ProductListView from './views/product/ProductListView';
+import HomeListView from './views/house/HomeListView';
 
 const routes = [
   {
     path: '/',
     element: <MainLayout />,
     children: [
-      { path: '/', element: <ProductListView /> },
+      { path: '/', element: <HomeListView /> },
     ]
   }
 ];
