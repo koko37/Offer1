@@ -15,11 +15,9 @@ import {
   makeStyles
 } from '@material-ui/core';
 import {
-  Favorite as FavoriteIcon,
-  Share as ShareIcon
+  Facebook as FacebookIcon,
+  Twitter as TwitterIcon,
 } from '@material-ui/icons';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import GetAppIcon from '@material-ui/icons/GetApp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,10 +61,10 @@ const HomeCard = ({ className, home, ...rest }) => {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <FacebookIcon />
         </IconButton>
         <IconButton aria-label="share">
-          <ShareIcon />
+          <TwitterIcon />
         </IconButton>
       </CardActions>
     </Card>

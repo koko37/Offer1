@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
   logoText: {
     color: 'white'
   },
+  copyText: {
+    color: 'gray'
+  },
   avatar: {
     width: 60,
     height: 60
@@ -52,8 +55,11 @@ const TopBar = ({
       <Toolbar>
         <RouterLink to="/" className={classes.logoLink}>
           <Logo alt="logo" className={classes.logoImg} />
-          <Typography variant="h4" className={classes.logoText}>
-            Offer1 @rocky
+          <Typography variant="h3" className={classes.logoText}>
+            Offer1 Test
+          </Typography>
+          <Typography variant="h3" className={classes.copyText}>
+            &nbsp;by @rocky
           </Typography>
         </RouterLink>
         <Box flexGrow={1} />
