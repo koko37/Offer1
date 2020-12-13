@@ -8,9 +8,7 @@ import {
 import { Pagination } from '@material-ui/lab';
 import Page from '../../../components/Page';
 import Toolbar from './Toolbar';
-import ProductCard from './ProductCard';
 import HomeCard from './HomeCard';
-import data from './data';
 import homes from '../../../homes.json';
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductList = () => {
   const classes = useStyles();
-  const [products] = useState(data);
 
   return (
     <Page
