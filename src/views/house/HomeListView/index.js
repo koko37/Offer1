@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProductList = () => {
+const HomeList = () => {
   const classes = useStyles();
 
   return (
@@ -70,4 +70,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default HomeList;
