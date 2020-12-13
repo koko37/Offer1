@@ -56,7 +56,7 @@ const TopBar = ({
         <RouterLink to="/" className={classes.logoLink}>
           <Logo alt="logo" className={classes.logoImg} />
           <Typography variant="h3" className={classes.logoText}>
-            Offer1 Test
+            Offer1 v0.1
           </Typography>
           <Typography variant="h3" className={classes.copyText}>
             &nbsp;by @rocky
