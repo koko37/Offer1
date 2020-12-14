@@ -14,7 +14,7 @@ import {
   Facebook as FacebookIcon,
   Twitter as TwitterIcon,
 } from '@material-ui/icons';
-
+import numeral from 'numeral';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -49,7 +49,7 @@ const HomeCard = ({ className, home, ...rest }) => {
           {home.property.address.city}, {home.property.address.state}, {home.property.address.zip}
         </Typography>
         <Typography gutterBottom variant="h5" component="h2" color="primary">
-          {home.property.numberBedrooms} BED | {home.property.numberBaths} BATH | {home.property.squareFeet} SQF | {home.price}$
+          {home.property.numberBedrooms} BED | {home.property.numberBaths} BATH | {numeral(home.property.squareFeet).format('0,0')} SQF | {numeral(home.price).format('0,0')}$
         </Typography>
         <Typography variant="body2" color="textSecondary" component="h4">
           {home.property.description}

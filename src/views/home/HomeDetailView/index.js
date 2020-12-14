@@ -23,6 +23,7 @@ import {
   Phone as PhoneIcon,
   Message as MessageIcon
 } from '@material-ui/icons';
+import numeral from 'numeral';
 import Page from '../../../components/Page';
 import Loading from '../../../components/Loading';
 import { mockGetHomeData } from '../../../store/actions/home';
@@ -107,7 +108,7 @@ const HomeDetailView = ({home, loading, getHomeData, match}) => {
                     </Box>
                     <Box mt={2}>
                       <Typography gutterBottom variant="h5" component="h2" color="primary">
-                        {home.property.numberBedrooms} BED | {home.property.numberBaths} BATH | {home.property.squareFeet} SQF | {home.price}$
+                        {home.property.numberBedrooms} BED | {home.property.numberBaths} BATH | {numeral(home.property.squareFeet).format('0,0')} SQF | {numeral(home.price).format('0,0')}$
                       </Typography>
                     </Box>
                     <Box mt={2}>
