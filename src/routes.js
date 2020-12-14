@@ -9,7 +9,8 @@ const routes = [
     path: '/',
     element: <MainLayout />,
     children: [
-      { path: '/1', element: <HomeDetailView /> },
+      { path: '/homes/:id', element: <HomeDetailView /> },
+      { path: '/homes', element: <HomeListView /> },
       { path: '/', element: <HomeListView /> },
     ]
   },

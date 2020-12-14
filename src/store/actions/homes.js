@@ -4,7 +4,10 @@ import isEmpty from 'lodash/isEmpty';
 import JwtConfig from '../../JwtConfig';
 import sampleData from '../../homes.json';
 
-
+/**
+ * search home request
+ * @param {*} criteria 
+ */
 export function searchHomes(criteria) {
   return function (dispatch) {
     dispatch({
@@ -43,8 +46,6 @@ export function mockSearchHomes(criteria) {
     });
 
     return setTimeout(() => {
-      console.log(criteria);
-
       if(isEmpty(criteria) || Object.values(criteria).every(v => v.toString().trim()==='')) {
         return dispatch({
           type: 'HOME/SEARCH.SUCCESS',

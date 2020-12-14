@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { mockSearchHomes } from '../../../store/actions/homes';
+import { Pagination } from '@material-ui/lab';
 import {
   Box,
   Container,
-  CircularProgress,
   Grid,
-  Typography,
   makeStyles
 } from '@material-ui/core';
-
-import { Pagination } from '@material-ui/lab';
+import { Link as RouterLink } from 'react-router-dom';
+import { mockSearchHomes } from '../../../store/actions/homes';
 import Page from '../../../components/Page';
+import Loading from '../../../components/Loading';
 import SearchBar from './SearchBar';
 import HomeCard from './HomeCard';
 
@@ -37,9 +36,6 @@ const useStyles = makeStyles((theme) => ({
   },
   productCard: {
     height: '100%'
-  },
-  spinner: {
-    marginRight: 32
   }
 }));
 
@@ -60,21 +56,7 @@ const HomeList = ({homes, loading, searchHomes}) => {
           submitCriteria = {(criteria) => searchHomes(criteria)}
           pending = {loading}
         />
-        <Box 
-          display={loading ? 'flex' : 'none'}
-          justifyContent="center"
-          alignItems="center"
-          p={5}
-          mt={5}
-        >
-          <CircularProgress color="primary" className={classes.spinner} />
-          <Typography
-            color="textPrimary"
-            variant="h2"
-          >
-            Loading search results ...
-          </Typography>
-        </Box>
+        <Loading loading={loading} />
         <Box display={loading ? 'none' : 'block'}>
           <Box mt={3}>
             <Grid
@@ -89,10 +71,12 @@ const HomeList = ({homes, loading, searchHomes}) => {
                   md={6}
                   xs={12}
                 >
-                  <HomeCard
-                    className={classes.productCard}
-                    home={home}
-                  />
+                  <RouterLink to={`/homes/${home.id}`}>
+                    <HomeCard
+                      className={classes.productCard}
+                      home={home}
+                    />
+                  </RouterLink>
                 </Grid>
               ))}
             </Grid>

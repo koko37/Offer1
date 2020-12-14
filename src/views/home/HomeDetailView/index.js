@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import clsx from 'clsx';
+import isEmpty from 'lodash/isEmpty';
 import {
   Avatar,
   Box,
@@ -21,7 +23,8 @@ import {
   Message as MessageIcon
 } from '@material-ui/icons';
 import Page from '../../../components/Page';
-import homes from '../../../homes.json';
+import Loading from '../../../components/Loading';
+import { mockGetHomeData } from '../../../store/actions/home';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,9 +57,25 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProductList = () => {
+function mapStateToProps(state) {
+  return {
+    home: state.home.home,
+    loading: state.home.loading,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getHomeData: (id) => mockGetHomeData(id)(dispatch),
+  }
+}
+
+const HomeDetailView = ({home, loading, getHomeData}) => {
   const classes = useStyles();
-  const home = homes[0];
+  
+  useEffect(() => {
+    getHomeData(1);
+  }, []);
 
   return (
     <Page
@@ -64,110 +83,116 @@ const ProductList = () => {
       title="Home details"
     >
       <Container maxWidth="lg">
-        <Box mb={2}>
-          <img 
-            className={classes.homeImage}
-            src={home.property.primaryImageUrl} 
-            alt={home.property.primaryImageUrl}
-          />
-        </Box>
-        <Grid container spacing={3}>
-          <Grid item md={8} xs={12}>
-            <Card>
-              <CardContent>
-                <Box>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {home.property.address.addressLine1}, {home.property.address.city}, {home.property.address.state}, {home.property.address.zip}
-                  </Typography>
-                </Box>
-                <Box mt={2}>
-                  <Typography gutterBottom variant="h5" component="h2" color="primary">
-                    {home.property.numberBedrooms} BED | {home.property.numberBaths} BATH | {home.property.squareFeet} SQF | {home.price}$
-                  </Typography>
-                </Box>
-                <Box mt={2}>
-                  <Typography variant="h6" component="h4">
-                    Property type:
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="h4">
-                  {home.property.propertyType}
-                  </Typography>
-                </Box>
-                <Box mt={2}>
-                  <Typography variant="h6" component="h4">
-                    Included items:
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="h4">
-                    {home.includedItems.map(item => item.name).join(', ')}
-                  </Typography>
-                </Box>
-                <Box mt={2}>
-                  <Typography variant="h6" component="h4">
-                    Description:
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="h4">
-                    {home.property.description}
-                  </Typography>
-                </Box>
-              </CardContent>
-              
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FacebookIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <TwitterIcon />
-                </IconButton>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item md={4} xs={12}>
-            <Card>
-              <CardContent>
-                <Box className={classes.ownerCard}>
-                  <Avatar className={classes.avatar}>
-                    {home.listingAgent.user.firstName[0]}
-                  </Avatar>
-                  <Typography
-                    color="textPrimary"
-                    gutterBottom
-                    variant="h3"
-                    className={classes.spacing}
-                  >
-                    {home.listingAgent.user.firstName} {home.listingAgent.user.lastName}
-                  </Typography>
-                  <Button
-                    className={clsx(classes.spacing, classes.buttons)}
-                    variant="contained"
-                    color="primary"
-                    startIcon={<MessageIcon />}
-                  >
-                    Message
-                  </Button>
-                  <Button
-                    className={clsx(classes.spacing, classes.buttons)}
-                    variant="contained"
-                    color="primary"
-                    startIcon={<MailIcon />}
-                  >
-                    Email
-                  </Button>
-                  <Button
-                    className={clsx(classes.spacing, classes.buttons)}
-                    variant="contained"
-                    color="primary"
-                    startIcon={<PhoneIcon />}
-                  >
-                    Call
-                  </Button>
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
+        <Loading loading={loading} />
+
+        {!loading && !isEmpty(home) && (
+          <Box>
+            <Box mb={2}>
+              <img 
+                className={classes.homeImage}
+                src={home.property.primaryImageUrl} 
+                alt={home.property.primaryImageUrl}
+              />
+            </Box>
+            <Grid container spacing={3}>
+              <Grid item md={8} xs={12}>
+                <Card>
+                  <CardContent>
+                    <Box>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {home.property.address.addressLine1}, {home.property.address.city}, {home.property.address.state}, {home.property.address.zip}
+                      </Typography>
+                    </Box>
+                    <Box mt={2}>
+                      <Typography gutterBottom variant="h5" component="h2" color="primary">
+                        {home.property.numberBedrooms} BED | {home.property.numberBaths} BATH | {home.property.squareFeet} SQF | {home.price}$
+                      </Typography>
+                    </Box>
+                    <Box mt={2}>
+                      <Typography variant="h6" component="h4">
+                        Property type:
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" component="h4">
+                      {home.property.propertyType}
+                      </Typography>
+                    </Box>
+                    <Box mt={2}>
+                      <Typography variant="h6" component="h4">
+                        Included items:
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" component="h4">
+                        {home.includedItems.map(item => item.name).join(', ')}
+                      </Typography>
+                    </Box>
+                    <Box mt={2}>
+                      <Typography variant="h6" component="h4">
+                        Description:
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" component="h4">
+                        {home.property.description}
+                      </Typography>
+                    </Box>
+                  </CardContent>
+                  
+                  <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                      <FacebookIcon />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                      <TwitterIcon />
+                    </IconButton>
+                  </CardActions>
+                </Card>
+              </Grid>
+              <Grid item md={4} xs={12}>
+                <Card>
+                  <CardContent>
+                    <Box className={classes.ownerCard}>
+                      <Avatar className={classes.avatar}>
+                        {home.listingAgent.user.firstName[0]}
+                      </Avatar>
+                      <Typography
+                        color="textPrimary"
+                        gutterBottom
+                        variant="h3"
+                        className={classes.spacing}
+                      >
+                        {home.listingAgent.user.firstName} {home.listingAgent.user.lastName}
+                      </Typography>
+                      <Button
+                        className={clsx(classes.spacing, classes.buttons)}
+                        variant="contained"
+                        color="primary"
+                        startIcon={<MessageIcon />}
+                      >
+                        Message
+                      </Button>
+                      <Button
+                        className={clsx(classes.spacing, classes.buttons)}
+                        variant="contained"
+                        color="primary"
+                        startIcon={<MailIcon />}
+                      >
+                        Email
+                      </Button>
+                      <Button
+                        className={clsx(classes.spacing, classes.buttons)}
+                        variant="contained"
+                        color="primary"
+                        startIcon={<PhoneIcon />}
+                      >
+                        Call
+                      </Button>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
+          </Box>
+        )}
       </Container>
     </Page>
   );
 };
 
-export default ProductList;
+export default connect(mapStateToProps, mapDispatchToProps)(HomeDetailView);

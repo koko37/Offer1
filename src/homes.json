@@ -276,9 +276,9 @@
         "zip": "91910"
       },
       "propertyType": "SingleFamilyHome",
-      "squareFeet": 3500,
-      "numberBedrooms": 6,
-      "numberBaths": 5,
+      "squareFeet": 8500,
+      "numberBedrooms": 7,
+      "numberBaths": 2,
       "description": "Big home with great views",
       "primaryOwner": {
         "id": 3,
@@ -440,10 +440,10 @@
         "zip": "32039"
       },
       "propertyType": "SingleFamilyHome",
-      "squareFeet": 6500,
-      "numberBedrooms": 5,
-      "numberBaths": 4,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing el",
+      "squareFeet": 9500,
+      "numberBedrooms": 3,
+      "numberBaths": 1,
+      "description": "Klone House Lorem ipsum dolor sit amet, consectetur adipiscing el",
       "primaryOwner": {
         "id": 3,
         "user": {
