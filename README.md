@@ -1,3 +1,7 @@
+<div align="center">
+  <a href="#" target="_blank"><img src="./public/offer1.png" alt="screenshot" /></a>
+</div>
+
 # Offer1 Interview Exercise
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) to give you a quick starting place for the exercise.
