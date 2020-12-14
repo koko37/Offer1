@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 import { LogIn as LoginIcon, LogOut as LogoutIcon } from 'react-feather';
 import Logo from '../../components/Logo';
+import { mockLogout } from '../../store/actions/auth';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -40,8 +41,15 @@ function mapStateToProps(state) {
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    logout: () => mockLogout()(dispatch),
+  }
+}
+
 const TopBar = ({
-  loginStatus
+  loginStatus,
+  logout
 }) => {
   const classes = useStyles();
 
@@ -62,10 +70,12 @@ const TopBar = ({
         </RouterLink>
         <Box flexGrow={1} />
         <RouterLink to="/login">
-          <IconButton className={classes.logoText}>
-            {!loginStatus && (<LoginIcon />)}
-            {loginStatus && (<LogoutIcon />)}
-          </IconButton>
+          {!loginStatus &&(<IconButton className={classes.logoText}>
+            <LoginIcon />
+          </IconButton>)}
+          {loginStatus &&(<IconButton className={classes.logoText} onClick={logout}>
+            <LogoutIcon />
+          </IconButton>)}
         </RouterLink>
       </Toolbar>
     </AppBar>
@@ -77,4 +87,4 @@ TopBar.propTypes = {
   onMobileNavOpen: PropTypes.func
 };
 
-export default connect(mapStateToProps)(TopBar);
+export default connect(mapStateToProps, mapDispatchToProps)(TopBar);

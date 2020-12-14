@@ -88,7 +88,7 @@ const HomeList = ({homes, loading, searchHomes}) => {
           >
             <Pagination
               color="primary"
-              count={3}
+              count={1}
               size="small"
             />
           </Box>

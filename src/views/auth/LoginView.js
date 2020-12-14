@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -15,6 +16,7 @@ import {
 import FacebookIcon from '../../icons/Facebook';
 import GoogleIcon from '../../icons/Google';
 import Page from '../../components/Page';
+import { mockLogin } from '../../store/actions/auth';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,9 +27,28 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const LoginView = () => {
+function mapStateToProps(state) {
+  return {
+    pending: state.auth.pending,
+    loginStatus: state.auth.loginStatus
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    login: (email, password) => mockLogin(email, password)(dispatch),
+  }
+}
+
+const LoginView = ({pending, loginStatus, login}) => {
   const classes = useStyles();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(loginStatus) {
+      navigate('/', { replace: true });
+    }
+  }, [loginStatus, navigate]);
 
   return (
     <Page
@@ -43,15 +64,15 @@ const LoginView = () => {
         <Container maxWidth="sm">
           <Formik
             initialValues={{
-              email: 'demo@devias.io',
-              password: 'Password123'
+              email: 'test@offer1.com',
+              password: 'password'
             }}
             validationSchema={Yup.object().shape({
               email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
               password: Yup.string().max(255).required('Password is required')
             })}
-            onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
+            onSubmit={(values) => {
+              login(values.email, values.password);
             }}
           >
             {({
@@ -188,4 +209,4 @@ const LoginView = () => {
   );
 };
 
-export default LoginView;
+export default connect(mapStateToProps, mapDispatchToProps)(LoginView);

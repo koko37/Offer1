@@ -11,8 +11,8 @@ export function login(email, password) {
       type: 'AUTH/LOGIN.START'
     });
 
-    const url = `login`;
     const body = {email, password};
+    const url = `login`;
     return axios.post(JwtConfig.getApiAddress() + url, body, JwtConfig.getConfig())
       .then((response) => {
         JwtConfig.setJwtToken(response.data.jwt_token);
@@ -40,22 +40,30 @@ const testPwd = 'password';
 export function mockLogin(email, password) {
   return function (dispatch) {
     dispatch({
-      type: 'HOME/FETCH.START'
+      type: 'AUTH/LOGIN.START'
     });
 
     return setTimeout(() => {
       if(email === testEmail && password === testPwd) {
         JwtConfig.setJwtToken('this+is+test+token+please+ignore+it+:)');
         return dispatch({
-          type: 'HOME/FETCH.SUCCESS',
+          type: 'AUTH/LOGIN.SUCCESS',
           payload: true
         });
       }
 
       return dispatch({
-        type: 'HOME/FETCH.ERROR',
+        type: 'AUTH/LOGIN.ERROR',
         payload: ['Invalid credential']
       });
     }, 2000);
+  }
+}
+
+export function mockLogout() {
+  return function (dispatch) {
+    dispatch({
+      type: 'AUTH/LOGOUT.SUCCESS'
+    });
   }
 }

@@ -30,6 +30,13 @@ export default function reducer(state = initialState, action) {
         errors: action.payload
       }
 
+    case 'AUTH/LOGOUT.SUCCESS':
+      return {
+        ...state,
+        pending: false,
+        loginStatus: false,
+        errors: []
+      }
     default:
       return state;
   }
