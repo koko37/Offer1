@@ -1,5 +1,8 @@
 <div align="center">
-  <a href="#" target="_blank"><img src="./public/offer1.png" alt="screenshot" /></a>
+  <img src="./public/offer1.png" alt="screenshot" />
+</div>
+<div align="center">
+  <img src="./public/offer2.png" alt="screenshot" />
 </div>
 
 # Offer1 Interview Exercise
