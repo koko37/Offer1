@@ -262,5 +262,251 @@
     },
     "includedItems": [],
     "excludedItems": []
+  },
+  {
+    "id": 4,
+    "property": {
+      "id": 4,
+      "address": {
+        "id": 4,
+        "addressLine1": "ABCD St, DEFG Ave",
+        "addressLine2": null,
+        "city": "Lorem ipsum",
+        "state": "California",
+        "zip": "91910"
+      },
+      "propertyType": "SingleFamilyHome",
+      "squareFeet": 3500,
+      "numberBedrooms": 6,
+      "numberBaths": 5,
+      "description": "Big home with great views",
+      "primaryOwner": {
+        "id": 3,
+        "user": {
+          "id": 4,
+          "firstName": "Tony",
+          "lastName": "Stark",
+          "email": "tony@marvel.com",
+          "phone": null,
+          "status": "Pending"
+        }
+      },
+      "ownerType": "Individual",
+      "primaryImageUrl": "https://lh3.googleusercontent.com/d/16sZ9E8A-Cd2zaiTLpMuQjJI8SVuC56E7=w1200"
+    },
+    "state": "PreSale",
+    "price": 1250000,
+    "escrowCompany": {
+      "id": 1,
+      "name": "Escrow America",
+      "phone": null,
+      "email": null,
+      "officerName": "John Doe",
+      "address": {
+        "id": 4,
+        "addressLine1": "500 1st St",
+        "addressLine2": null,
+        "city": "Chula Vista",
+        "state": "California",
+        "zip": "91910"
+      },
+      "type": "Escrow"
+    },
+    "titleCompany": {
+      "id": 2,
+      "name": "First American Title",
+      "phone": null,
+      "email": null,
+      "officerName": "George Washington",
+      "address": {
+        "id": 5,
+        "addressLine1": "503 1st St",
+        "addressLine2": null,
+        "city": "Chula Vista",
+        "state": "California",
+        "zip": "91910"
+      },
+      "type": "Title"
+    },
+    "listingAgent": {
+      "id": 1,
+      "licenseNumber": "123456789",
+      "licenseState": "California",
+      "user": {
+        "id": 2,
+        "firstName": "Deja",
+        "lastName": "Vu",
+        "email": "xyz@email.com",
+        "phone": null,
+        "status": "Active"
+      },
+      "status": "Active"
+    },
+    "includedItems": [],
+    "excludedItems": []
+  },
+  {
+    "id": 5,
+    "property": {
+      "id": 5,
+      "address": {
+        "id": 5,
+        "addressLine1": "James St, 8787",
+        "addressLine2": null,
+        "city": "Cruck Bill",
+        "state": "Clone State",
+        "zip": "82371"
+      },
+      "propertyType": "SingleFamilyHome",
+      "squareFeet": 6500,
+      "numberBedrooms": 5,
+      "numberBaths": 4,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing el",
+      "primaryOwner": {
+        "id": 3,
+        "user": {
+          "id": 4,
+          "firstName": "Tony",
+          "lastName": "Stark",
+          "email": "tony@marvel.com",
+          "phone": null,
+          "status": "Pending"
+        }
+      },
+      "ownerType": "Individual",
+      "primaryImageUrl": "https://lh3.googleusercontent.com/d/158cXiiAobxQG1C-HWuSAm4wfl-lCg098=w1200"
+    },
+    "state": "PreSale",
+    "price": 1250000,
+    "escrowCompany": {
+      "id": 1,
+      "name": "Escrow America",
+      "phone": null,
+      "email": null,
+      "officerName": "John Doe",
+      "address": {
+        "id": 4,
+        "addressLine1": "500 1st St",
+        "addressLine2": null,
+        "city": "Chula Vista",
+        "state": "California",
+        "zip": "91910"
+      },
+      "type": "Escrow"
+    },
+    "titleCompany": {
+      "id": 2,
+      "name": "First American Title",
+      "phone": null,
+      "email": null,
+      "officerName": "George Washington",
+      "address": {
+        "id": 5,
+        "addressLine1": "503 1st St",
+        "addressLine2": null,
+        "city": "Chula Vista",
+        "state": "California",
+        "zip": "91910"
+      },
+      "type": "Title"
+    },
+    "listingAgent": {
+      "id": 1,
+      "licenseNumber": "123456789",
+      "licenseState": "California",
+      "user": {
+        "id": 2,
+        "firstName": "Deja",
+        "lastName": "Vu",
+        "email": "xyz@email.com",
+        "phone": null,
+        "status": "Active"
+      },
+      "status": "Active"
+    },
+    "includedItems": [],
+    "excludedItems": []
+  },
+  {
+    "id": 6,
+    "property": {
+      "id": 6,
+      "address": {
+        "id": 6,
+        "addressLine1": "Emerald Way 4532",
+        "addressLine2": null,
+        "city": "Brooklyn Austin",
+        "state": "Clorida",
+        "zip": "32039"
+      },
+      "propertyType": "SingleFamilyHome",
+      "squareFeet": 6500,
+      "numberBedrooms": 5,
+      "numberBaths": 4,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing el",
+      "primaryOwner": {
+        "id": 3,
+        "user": {
+          "id": 4,
+          "firstName": "Tony",
+          "lastName": "Stark",
+          "email": "tony@marvel.com",
+          "phone": null,
+          "status": "Pending"
+        }
+      },
+      "ownerType": "Individual",
+      "primaryImageUrl": "https://lh3.googleusercontent.com/d/1FcHRnfakYfjcoo5zzNV9XPn5rmrwgKrt=w1200"
+    },
+    "state": "PreSale",
+    "price": 1250000,
+    "escrowCompany": {
+      "id": 1,
+      "name": "Escrow America",
+      "phone": null,
+      "email": null,
+      "officerName": "John Doe",
+      "address": {
+        "id": 4,
+        "addressLine1": "500 1st St",
+        "addressLine2": null,
+        "city": "Chula Vista",
+        "state": "California",
+        "zip": "91910"
+      },
+      "type": "Escrow"
+    },
+    "titleCompany": {
+      "id": 2,
+      "name": "First American Title",
+      "phone": null,
+      "email": null,
+      "officerName": "George Washington",
+      "address": {
+        "id": 5,
+        "addressLine1": "503 1st St",
+        "addressLine2": null,
+        "city": "Chula Vista",
+        "state": "California",
+        "zip": "91910"
+      },
+      "type": "Title"
+    },
+    "listingAgent": {
+      "id": 1,
+      "licenseNumber": "123456789",
+      "licenseState": "California",
+      "user": {
+        "id": 2,
+        "firstName": "Deja",
+        "lastName": "Vu",
+        "email": "xyz@email.com",
+        "phone": null,
+        "status": "Active"
+      },
+      "status": "Active"
+    },
+    "includedItems": [],
+    "excludedItems": []
   }
 ]

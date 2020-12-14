@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import {
   Avatar,
@@ -7,9 +7,7 @@ import {
   Container,
   Card,
   CardContent,
-  CardMedia,
   CardActions,
-  Divider,
   Grid,
   IconButton,
   Typography,
@@ -63,7 +61,7 @@ const ProductList = () => {
   return (
     <Page
       className={classes.root}
-      title="Browse houses"
+      title="Home details"
     >
       <Container maxWidth="lg">
         <Box mb={2}>

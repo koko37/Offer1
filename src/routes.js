@@ -1,8 +1,8 @@
 import React from 'react';
 import MainLayout from './layouts/MainLayout';
 import DefaultLayout from './layouts/DefaultLayout';
-import HomeListView from './views/house/HomeListView';
-import HomeDetailView from './views/house/HomeDetailView';
+import HomeListView from './views/home/HomeListView';
+import HomeDetailView from './views/home/HomeDetailView';
 import LoginView from './views/auth/LoginView';
 const routes = [
   {

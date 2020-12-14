@@ -1,17 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { mockSearchHomes } from '../../../store/actions/homes';
 import {
   Box,
   Container,
-  Grid,
   CircularProgress,
+  Grid,
   Typography,
   makeStyles
 } from '@material-ui/core';
+
 import { Pagination } from '@material-ui/lab';
 import Page from '../../../components/Page';
-import Toolbar from './Toolbar';
+import SearchBar from './SearchBar';
 import HomeCard from './HomeCard';
-import homes from '../../../homes.json';
+
+function mapStateToProps(state) {
+  return {
+    homes: state.homes.homes,
+    loading: state.homes.loading
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    searchHomes: (criteria) => mockSearchHomes(criteria)(dispatch),
+  }
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,17 +43,30 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const HomeList = () => {
+const HomeList = ({homes, loading, searchHomes}) => {
   const classes = useStyles();
+  
+  useEffect(() => {
+    searchHomes({});
+  }, [searchHomes]);
 
   return (
     <Page
       className={classes.root}
-      title="Browse houses"
+      title="Homes list"
     >
       <Container maxWidth={false}>
-        <Toolbar />
-        <Box mt={5} display="flex" justifyContent="center" alignItems="center" p={5}>
+        <SearchBar
+          submitCriteria = {(criteria) => searchHomes(criteria)}
+          pending = {loading}
+        />
+        <Box 
+          display={loading ? 'flex' : 'none'}
+          justifyContent="center"
+          alignItems="center"
+          p={5}
+          mt={5}
+        >
           <CircularProgress color="primary" className={classes.spinner} />
           <Typography
             color="textPrimary"
@@ -47,7 +75,7 @@ const HomeList = () => {
             Loading search results ...
           </Typography>
         </Box>
-        <Box>
+        <Box display={loading ? 'none' : 'block'}>
           <Box mt={3}>
             <Grid
               container
@@ -86,4 +114,4 @@ const HomeList = () => {
   );
 };
 
-export default HomeList;
+export default connect(mapStateToProps, mapDispatchToProps)(HomeList);

@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
 import {
   Grid,
   Box,
@@ -28,12 +27,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Toolbar = ({ className, ...rest }) => {
+const SearchBar = ({ submitCriteria, pending, ...rest }) => {
   const classes = useStyles();
+  const [criteria, setCriteria] = useState({})
+
+  const handleChange = (k, v) => {
+    setCriteria({
+      ...criteria,
+      [k]: v
+    })
+  }
 
   return (
     <div
-      className={clsx(classes.root, className)}
+      className={classes.root}
       {...rest}
     >
       <Box mt={3}>
@@ -65,6 +72,7 @@ const Toolbar = ({ className, ...rest }) => {
                     }}
                     placeholder="Address"
                     variant="outlined"
+                    onChange={(e) => handleChange('address', e.target.value)}
                     fullWidth
                   />
                 </Grid>
@@ -94,6 +102,7 @@ const Toolbar = ({ className, ...rest }) => {
                         }}
                         placeholder="Min"
                         variant="outlined"
+                        onChange={(e) => handleChange('minPrice', e.target.value)}
                         fullWidth
                       />
                     </Grid>
@@ -113,6 +122,7 @@ const Toolbar = ({ className, ...rest }) => {
                         }}
                         placeholder="Max"
                         variant="outlined"
+                        onChange={(e) => handleChange('maxPrice', e.target.value)}
                         fullWidth
                       />
                     </Grid>
@@ -139,6 +149,7 @@ const Toolbar = ({ className, ...rest }) => {
                     }}
                     placeholder="Bedrooms"
                     variant="outlined"
+                    onChange={(e) => handleChange('numberOfRooms', e.target.value)}
                     fullWidth
                   />
                 </Grid>
@@ -153,6 +164,8 @@ const Toolbar = ({ className, ...rest }) => {
                     variant="contained"
                     color="primary"
                     startIcon={<SearchIcon />}
+                    onClick={() => submitCriteria(criteria)}
+                    disabled = {pending}
                     fullWidth
                   >
                     Search
@@ -168,8 +181,8 @@ const Toolbar = ({ className, ...rest }) => {
   );
 };
 
-Toolbar.propTypes = {
-  className: PropTypes.string
+SearchBar.propTypes = {
+  updateCriteria: PropTypes.func
 };
 
-export default Toolbar;
+export default SearchBar;
