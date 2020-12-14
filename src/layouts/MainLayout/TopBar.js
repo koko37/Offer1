@@ -58,8 +58,8 @@ const TopBar = ({
           <Typography variant="h3" className={classes.logoText}>
             Offer1 v0.1
           </Typography>
-          <Typography variant="h3" className={classes.copyText}>
-            &nbsp;by @rocky
+          <Typography variant="h4" className={classes.copyText}>
+            &nbsp;@rocky
           </Typography>
         </RouterLink>
         <Box flexGrow={1} />

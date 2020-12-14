@@ -44,7 +44,7 @@ export function mockGetHomeData(id) {
     return setTimeout(() => {
         return dispatch({
           type: 'HOME/FETCH.SUCCESS',
-          payload: sampleData[parseInt(id)]
+          payload: sampleData[parseInt(id)-1]
         });
     }, 2000);
   }

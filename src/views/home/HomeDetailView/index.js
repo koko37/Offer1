@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import clsx from 'clsx';
 import isEmpty from 'lodash/isEmpty';
 import {
@@ -70,11 +71,12 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-const HomeDetailView = ({home, loading, getHomeData}) => {
+const HomeDetailView = ({home, loading, getHomeData, match}) => {
   const classes = useStyles();
-  
+  const { id } = useParams();
+
   useEffect(() => {
-    getHomeData(1);
+    getHomeData(id);
   }, []);
 
   return (
