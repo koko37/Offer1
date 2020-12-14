@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   AppBar,
-  Badge,
   Box,
-  Hidden,
   IconButton,
   Toolbar,
   Typography,
   makeStyles
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
-import InputIcon from '@material-ui/icons/Input';
+import { LogIn as LoginIcon, LogOut as LogoutIcon } from 'react-feather';
 import Logo from '../../components/Logo';
 
 const useStyles = makeStyles((theme) => ({
@@ -38,19 +34,21 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+function mapStateToProps(state) {
+  return {
+    loginStatus: state.auth.loginStatus
+  };
+}
+
 const TopBar = ({
-  className,
-  onMobileNavOpen,
-  ...rest
+  loginStatus
 }) => {
   const classes = useStyles();
-  const [notifications] = useState([]);
 
   return (
     <AppBar
-      className={clsx(classes.root, className)}
+      className={classes.root}
       elevation={0}
-      {...rest}
     >
       <Toolbar>
         <RouterLink to="/" className={classes.logoLink}>
@@ -63,28 +61,12 @@ const TopBar = ({
           </Typography>
         </RouterLink>
         <Box flexGrow={1} />
-        <Hidden mdDown>
-          <IconButton color="inherit">
-            <Badge
-              badgeContent={notifications.length}
-              color="primary"
-              variant="dot"
-            >
-              <NotificationsIcon />
-            </Badge>
+        <RouterLink to="/login">
+          <IconButton className={classes.logoText}>
+            {!loginStatus && (<LoginIcon />)}
+            {loginStatus && (<LogoutIcon />)}
           </IconButton>
-          <IconButton color="inherit">
-            <InputIcon />
-          </IconButton>
-        </Hidden>
-        <Hidden lgUp>
-          <IconButton
-            color="inherit"
-            onClick={onMobileNavOpen}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Hidden>
+        </RouterLink>
       </Toolbar>
     </AppBar>
   );
@@ -95,4 +77,4 @@ TopBar.propTypes = {
   onMobileNavOpen: PropTypes.func
 };
 
-export default TopBar;
+export default connect(mapStateToProps)(TopBar);

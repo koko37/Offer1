@@ -77,7 +77,7 @@ const HomeDetailView = ({home, loading, getHomeData, match}) => {
 
   useEffect(() => {
     getHomeData(id);
-  }, []);
+  }, [getHomeData, id]);
 
   return (
     <Page

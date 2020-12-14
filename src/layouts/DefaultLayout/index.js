@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
 
@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 
 const DefaultLayout = () => {
   const classes = useStyles();
-  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
     <div className={classes.root}>

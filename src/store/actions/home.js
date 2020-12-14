@@ -1,6 +1,4 @@
 import axios from 'axios';
-import queryString from 'query-string';
-import isEmpty from 'lodash/isEmpty';
 import JwtConfig from '../../JwtConfig';
 import sampleData from '../../homes.json';
 
